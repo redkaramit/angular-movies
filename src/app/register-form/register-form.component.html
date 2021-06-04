@@ -1,0 +1,22 @@
+<form (submit)="saveChanges()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label>Name*</mat-label>        
+        <input formControlName="name" matInput />
+        <mat-error *ngIf="form.invalid">{{getErrorMessageFieldName()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-select formControlName="genreId">
+            <mat-option *ngFor="let g of genres" [value]="g.id">{{g.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-checkbox formControlName="upcomingReleases">
+            Upcoming releases 
+    </mat-checkbox>
+    <mat-checkbox formControlName="inTheater">
+        inTheater
+    </mat-checkbox>
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">Save Changes</button>
+        <a mat-stroked-button routerLink="/genres">Cancel</a>
+    </div>
+</form>

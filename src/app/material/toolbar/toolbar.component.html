@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <span>
+        <a routerLink='' mat-button>
+            <mat-icon>local_movies</mat-icon>Home
+        </a>
+    </span>
+    <div>
+        <a mat-button routerLink='genres'>Genres</a>
+    </div>
+    <div>
+        <a mat-button routerLink='userlist'>Users</a>
+    </div>
+    <div class="space">
+
+    </div>
+
+    <app-authorise-view>
+        <ng-container authorised>
+            Hello, {{securityService.getFieldFromJWT('email')}}
+            <a mat-button (click)="securityService.logout()" >Logout</a>
+        </ng-container>
+        <ng-container notAuthorised>
+            <a mat-button routerLink="login">Login</a>
+            <a mat-button routerLink="register">Register</a>
+        </ng-container>
+    </app-authorise-view>
+</mat-toolbar>
